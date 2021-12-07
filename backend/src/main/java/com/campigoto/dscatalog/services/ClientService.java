@@ -13,49 +13,49 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.campigoto.dscatalog.dto.CategoryDTO;
-import com.campigoto.dscatalog.entities.Category;
-import com.campigoto.dscatalog.repositories.CategoryRepository;
+import com.campigoto.dscatalog.dto.ClientDTO;
+import com.campigoto.dscatalog.entities.Client;
+import com.campigoto.dscatalog.repositories.ClientRepository;
 import com.campigoto.dscatalog.services.exceptions.DatabaseException;
 import com.campigoto.dscatalog.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class CategoryService {
+public class ClientService {
 
 	@Autowired
-	private CategoryRepository repository;
+	private ClientRepository repository;
 
 	@Transactional(readOnly = true)
-	public Page<CategoryDTO> findAllPaged(PageRequest pageRequest) {
-		Page<Category> list = repository.findAll(pageRequest);
-		return list.map(x -> new CategoryDTO(x));
+	public Page<ClientDTO> findAllPaged(PageRequest pageRequest) {
+		Page<Client> list = repository.findAll(pageRequest);
+		return list.map(x -> new ClientDTO(x));
 		  
 	}
 
 	@Transactional(readOnly = true)
-	public CategoryDTO findById(Long id) {
-		Optional<Category> obj = repository.findById(id);
-		Category entity = obj.orElseThrow(() -> new ResourceNotFoundException ("Entity not found !"));
+	public ClientDTO findById(Long id) {
+		Optional<Client> obj = repository.findById(id);
+		Client entity = obj.orElseThrow(() -> new ResourceNotFoundException ("Entity not found !"));
 		
-		return new CategoryDTO(entity);
+		return new ClientDTO(entity);
 	}
 	
 	@Transactional
-	public CategoryDTO insert(CategoryDTO dto) {
-		Category entity = new Category();
-		entity.setname(dto.getName());
+	public ClientDTO insert(ClientDTO dto) {
+		Client entity = new Client();
+		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
 				
-		return new CategoryDTO(entity);
+		return new ClientDTO(entity);
 	}
 
 	@Transactional
-	public @Valid CategoryDTO update(Long id, @Valid CategoryDTO dto) {
+	public @Valid ClientDTO update(Long id, @Valid ClientDTO dto) {
 		try {
-			Category entity = repository.getById(id);
-			entity.setname(dto.getName());
+			Client entity = repository.getById(id);
+			copyDtoToEntity(dto, entity);
 			entity = repository.save(entity);
-			return new CategoryDTO(entity);
+			return new ClientDTO(entity);
 		}
 		catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not found " + id);
@@ -75,8 +75,19 @@ public class CategoryService {
 			throw new DatabaseException("Integrity violation");
 					
 		}
+		
+		
 			
 	}
+	
+	private void copyDtoToEntity(ClientDTO dto, Client entity) {
+		entity.setName(dto.getName());
+		entity.setCpf(dto.getCpf());
+		entity.setBirthDate(dto.getBirthDate());
+		entity.setIncome(dto.getIncome());
+		entity.setChildren(dto.getChildren());			
+		
+		}
 
 	
 	

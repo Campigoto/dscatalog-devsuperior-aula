@@ -110,9 +110,9 @@ public class ProductResourceTests {
 				.accept(MediaType.APPLICATION_JSON));
 		
 		result.andExpect(status().isCreated());
-	//	result.andExpect(jsonPath("$.id").exists());
-	//	result.andExpect(jsonPath("$.name").exists());
-	//	result.andExpect(jsonPath("$.description").exists());
+		result.andExpect(jsonPath("$.id").exists());
+		result.andExpect(jsonPath("$.name").exists());
+		result.andExpect(jsonPath("$.description").exists());
 	}
 	
 	

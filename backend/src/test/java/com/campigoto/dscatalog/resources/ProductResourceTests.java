@@ -114,10 +114,8 @@ public class ProductResourceTests {
 		result.andExpect(jsonPath("$.name").exists());
 		result.andExpect(jsonPath("$.description").exists());
 	}
-	
-	
+		
 	@Test
-
 	public void updateShouldReturnProductWhenIdExists() throws Exception{
 		
 		String jsonBody = objectMapper.writeValueAsString(productDTO);

@@ -1,0 +1,15 @@
+
+Banco : dscatalog-campigoto
+
+Usuário: hkbzessvugwmop
+
+Senha: 07ad459ea64680d7a33169fcff38e49ad42dec1f206a749010b22cfa2dd74cc8
+
+Host:ec2-3-209-226-234.compute-1.amazonaws.com
+
+Porta: 5432
+
+Nome da Base de dados: d4u1v04ei37807
+
+
+docker run -p 80:8080 --name dscatalog-heroku -e APP_PROFILE=dev -e DB_URL=jdbc:postgresql://ec2-3-209-226-234.compute-1.amazonaws.com:5432/d4u1v04ei37807 -e DB_USERNAME=hkbzessvugwmop -e DB_PASSWORD=07ad459ea64680d7a33169fcff38e49ad42dec1f206a749010b22cfa2dd74cc8 dscatalog:v1

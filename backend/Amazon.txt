@@ -1,0 +1,5 @@
+campigoto@hotmail.com
+036239Ec@
+
+Virtual
+arn:aws:iam::211261065352:mfa/root-account-mfa-device

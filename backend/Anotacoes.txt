@@ -1,0 +1,29 @@
+http://educandoweb.com.br/duvidas-sbi.html
+
+CLEARDB_DATABASE_URL: mysql://bd0f56430865d7:92c90dc6@us-cdbr-east-05.cleardb.net/heroku_e5d027866f30677?reconnect=true
+
+
+AWS Service
+------------
+User name: campigoto
+Password: !)wP=l{@h=1w0}&
+Access key ID: AKIATCMBEBCEAFBB4FYN
+Secret access key: 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
+Console login link: https://211261065352.signin.aws.amazon.com/console
+
+
+HEROKU
+------
+
+id.heroku.com -> 
+
+Usuário: campigoto@hotmail.com  
+Senha  : 036239ec@
+
+keytool -genkey -v -keystore curso-spring-ionic-key.jks -keyalg RSA -keysize 2048 -validity 100000 -alias curso-spring-ionic
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore curso-spring-ionic-key.jks app-release-unsigned.apk curso-spring-ionic
+
+zipalign -v 4 app-release-unsigned.apk SistemaPedidos.apk
+
+senha da área de armazenamento das chaves : 036239

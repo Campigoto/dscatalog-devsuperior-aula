@@ -6,7 +6,7 @@ type Props = {
   text: string;
 }
 
-const ButtonIcon = ({text} : Props) => {
+const ButtonIcon = ({ text } : Props) => {
   return (
     <div className="btn-container">
       <button className="btn btn-primary">

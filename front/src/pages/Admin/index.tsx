@@ -1,23 +1,25 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Navbar from './Navbar';
+import Users from './User';
+import PrivateRoute from 'components/PrivateRoute';
+
 
 import './styles.css';
-
 const Admin = () => {
   return (
     <div className="admin-container">
       <Navbar />
       <div className="admin-content">
         <Switch>
-          <Route path="/admin/products">
+          <PrivateRoute path="/admin/products">
             <h1>Product CRUD</h1>
-          </Route>
-          <Route path="/admin/categories">
+          </PrivateRoute>
+          <PrivateRoute path="/admin/categories">
             <h1>Category CRUD</h1>
-          </Route>
-          <Route path="/admin/users">
-            <h1>User CRUD</h1>
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path="/admin/users">
+            <Users />
+          </PrivateRoute>
         </Switch>
       </div>
     </div>
